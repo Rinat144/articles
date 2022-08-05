@@ -36,13 +36,6 @@ class ArticleController extends Controller
             ->where('categories.name', '=', $data['category'])
             ->get();
 
-         /*   $category = Category::where('name', $data['category'])->first(); //id категории
-            $categoryArticles = CategoryArticle::where('category_id', $category->id)->get(); //получение всех статей
-            $articles = [];
-            foreach ($categoryArticles as $categoryArticle) {
-                $key = $categoryArticle->articles_id;
-                $articles[] = Article::find($key);
-            }*/
             return ArticleResource::collection($articles);
         }
 
@@ -51,12 +44,8 @@ class ArticleController extends Controller
                 ->where('authors.name', '=', $data['author'])
                 ->get();
 
-            /*$author = Author::where('name', $data['author'])->first();
-            $articles = Article::where('author_id', $author->id)->get();*/
-
             return ArticleResource::collection($articles);
         }
-
     }
 
 
